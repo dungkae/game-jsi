@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hỗ Trợ - Shop Skin Trò Chơi</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('https://inkythuatso.com/uploads/thumbnails/800/2022/03/anh-genshin-impact-4k-thanh-pho-inazuma-17-10-34-38.jpg') center/cover no-repeat fixed;
+            color: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Navbar from index.html */
+        #navbar {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(10,10,20,0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 60px; z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        #navbar:hover { transform: translateY(-5px); }
+        .logo { font-size: 2em; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 2px;
+                 text-shadow: 0 0 10px rgba(255, 107, 107, 0.8); animation: glow 2s infinite alternate; }
+        @keyframes glow { 0% { text-shadow:0 0 5px #ff6b6b;} 100% { text-shadow:0 0 15px #feca57;} }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul li a { text-decoration: none; color: #fff; font-weight: 600; padding: 10px 20px; border-radius: 30px; transition: all 0.4s ease; position: relative; }
+        nav ul li a:hover {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+            transform: scale(1.1);
+        }
+        /* Contact Section */
+        .contact-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 50px;
+        }
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .contact-card h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0,0,0,0.7);
+        }
+        .contact-card form input,
+        .contact-card form textarea {
+            width: 100%; padding: 14px;
+            margin: 10px 0;
+            border: none; border-radius: 10px;
+            outline: none;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.8);
+            color: #333;
+            transition: transform 0.3s;
+        }
+        .contact-card form input:focus,
+        .contact-card form textarea:focus { transform: scale(1.02); }
+        .contact-card form button {
+            width: 100%; padding: 14px;
+            margin-top: 15px;
+            border: none; border-radius: 10px;
+            font-size: 1rem; font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            color: #fff;
+        }
+        .contact-card form button:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 0 20px rgba(254,202,87,0.9);
+        }
+        .contact-footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .contact-footer a { color: #feca57; text-decoration: none; }
+        .contact-footer a:hover { text-decoration: underline; }
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <header id="navbar">
+        <div class="logo">Shop Skin Trò Chơi</div>
+        <nav>
+            <ul>
+                <li><a href="index.html#welcome">Trang chủ</a></li>
+                <li><a href="index.html#games">Skin trò chơi</a></li>
+                <li><a href="index.html#how-to-use">Cách sử dụng</a></li>
+                <li><a href="/html/login.html">Đăng nhập</a></li>
+                <li><a href="contact.html">Hỗ Trợ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <div class="contact-card">
+            <h1>Liên hệ với chúng tôi</h1>
+            <form action="/submit_form" method="post">
+                <input type="text" name="name" placeholder="Tên của bạn" required>
+                <input type="email" name="email" placeholder="Email của bạn" required>
+                <textarea name="message" rows="5" placeholder="Lời nhắn của bạn" required></textarea>
+                <button type="submit">Gửi</button>
+            </form>
+            <div class="contact-footer">
+                <p>Hoặc gửi email trực tiếp: <a href="mailto:dungkae280@gmail.com">dungkae280@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

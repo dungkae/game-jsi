@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Items Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            background-image: url('https://maytinhvui.com/wp-content/uploads/2020/11/hinh-nen-may-tinh-4k-game-05.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+        }
+
+        canvas#particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        #navbar:hover {
+            transform: translateY(-5px);
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.8);
+            animation: glow 2s infinite alternate;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            background: linear-gradient(45deg, transparent, transparent);
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+            transform: scale(1.1);
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #ff6b6b; }
+            100% { text-shadow: 0 0 15px #feca57; }
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('https://wallpapercave.com/wp/wp10498154.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.2), transparent);
+            animation: lightPulse 6s infinite;
+        }
+
+        @keyframes lightPulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .shop-now-button {
+            padding: 18px 40px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+            transition: all 0.4s ease;
+            animation: pulse 1.5s infinite;
+        }
+
+        .shop-now-button:hover {
+            background: linear-gradient(45deg, #feca57, #ff6b6b);
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 0 30px rgba(254, 202, 87, 0.9);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .games-section {
+            padding: 80px 50px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .games-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .game-category {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .game-category h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .game-slider {
+            position: relative;
+            max-width: 990px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .game-list {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .game {
+            background: #f9f9f9;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 450px;
+            margin: 0 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .game:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .game img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .game h4 {
+            font-size: 1.3em;
+            margin: 10px 0 5px;
+            color: #333;
+            padding: 0 15px;
+            text-align: left;
+            flex-grow: 0;
+        }
+
+        .game p {
+            padding: 0 15px;
+            font-size: 0.95em;
+            color: #666;
+            height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            margin-bottom: 10px;
+            text-align: left;
+            flex-grow: 0;
+        }
+
+        .game .price {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #6b48ff;
+            margin: 0 15px 10px;
+            text-align: left;
+            flex-grow: 0;
+        }
+
+        .buy-button {
+            display: block;
+            margin: 0 15px 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex-grow: 0;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #feca57, #ff6b6b);
+            transform: scale(1.05);
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-button {
+            background: rgba(107, 72, 255, 0.8);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-button:hover {
+            background: #00ddeb;
+        }
+
+        .how-to-use {
+            padding: 50px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        .how-to-use h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .how-to-use p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            background: #0a0a14;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(255, 107, 107, 0.1), transparent);
+            animation: wave 5s infinite ease-in-out;
+        }
+
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        footer p {
+            font-size: 1em;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        footer .social-icons {
+            margin-top: 15px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.5em;
+            transition: all 0.4s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #feca57;
+            transform: scale(1.2) rotate(10deg);
+            text-shadow: 0 0 10px rgba(254, 202, 87, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles"></canvas>
+    <header id="navbar">
+        <div class="logo">Shop Skin Trò Chơi</div>
+        <nav>
+            <ul>
+                <li><a href="#welcome">Trang chủ</a></li>
+                <li><a href="#games">Skin trò chơi</a></li>
+                <li><a href="#how-to-use">Cách sử dụng</a></li>
+                <li><a href="/html/login.html">Đăng nhập</a></li>
+                <li><a href="/html/contact.html">Hỗ Trợ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="welcome" class="hero">
+        <div class="hero-content">
+            <h1>Chào mừng bạn đến với Shop Skin Trò Chơi</h1>
+            <p>Khám phá các vật phẩm trò chơi đỉnh cao với giá cả cạnh tranh!</p>
+            <a href="#games" class="shop-now-button">Cửa Hàng Ngay</a>
+        </div>
+    </div>
+
+    <section id="games" class="games-section">
+        <h2>Vật phẩm trò chơi nổi bật</h2>
+
+        <div class="game-category">
+            <h3>Skin Súng</h3>
+            <div class="game-slider" id="shootingSlider">
+                <div class="game-list" id="shootingList">
+                    <div class="game">
+                        <img src="https://api.duniagames.co.id/api/content/upload/file/16516125501609742981.jpg" alt="Scar Megalodon Alpha" />
+                        <h4>Scar Megalodon Alpha</h4>
+                        <p>Scar Megalodon Alpha là khẩu súng đắt nhất và hiếm nhất trong Free Fire.</p>
+                        <p class="price">$200.00 USD</p>
+                        <a href="/html/game-detail/game4.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://imageio.forbes.com/specials-images/imageserve/613766b74881e4e67926a2c3/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds" alt="Zedd x Spectrum Skin"/>
+                        <h4>Zedd x Spectrum Skin</h4>
+                        <p>Là bộ súng đắt và đẹp nhất trong game valorant</p>
+                        <p class="price">$100.00 USD</p>
+                        <a href="/html/game-detail/game3.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://i.ytimg.com/vi/RgysETI0B78/mqdefault.jpg" alt="AUG - Akihabara Accept" />
+                        <h4>AUG - Akihabara Accept</h4>
+                        <p>AUG Akihabara Accept là skin súng đắt nhất trong CS:GO.</p>
+                        <p class="price">$1,200.00 USD</p>
+                        <a href="/html/game-detail/game5.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://preview.redd.it/t387olbrtdq91.jpg?width=640&crop=smart&auto=webp&s=ba252b20807f3f951d144660d6e93bca1a5d042b" alt="Glacier M416" />
+                        <h4>Glacier M416</h4>
+                        <p>Glacier M416 là skin súng hiếm và được săn đón nhất trong PUBG.</p>
+                        <p class="price">$450.00 USD</p>
+                        <a href="/html/game-detail/game9.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFVZK-ZNb9O77QiaoZvurcEJnqBXq3eJ-jEQ&s" alt="FFWS 2021 MP40" />
+                        <h4>FFWS 2021 MP40</h4>
+                        <p>FFWS 2021 MP40 là skin súng kỷ niệm giải đấu Free Fire World Series 2021.</p>
+                        <p class="price">$180.00 USD</p>
+                        <a href="/html/game-detail/game10.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://media.fab.com/image_previews/gallery_images/03f94b58-7864-4b34-9ed9-e99231a54ebb/9cc4a0c1-7b08-4df8-a247-dd3d0d2f5798.png" alt="AWP Dragon Lore" />
+                        <h4>AWP Dragon Lore</h4>
+                        <p>AWP Dragon Lore là skin súng huyền thoại và đắt nhất trong CS:GO.</p>
+                        <p class="price">$2,500.00 USD</p>
+                        <a href="/html/game-detail/game12.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-button" onclick="slideLeft('shootingList')"><</button>
+                <button class="slider-button" onclick="slideRight('shootingList')">></button>
+            </div>
+        </div>
+
+        <div class="game-category">
+            <h3>Trang Phục</h3>
+            <div class="game-slider" id="otherSlider">
+                <div class="game-list" id="otherList">
+                    <div class="game">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS247xQqRelJjTL_scUPSdfeoeSpGMrYl61A4oEcbsdMREeBO9jHNT4e-oiqhVU-vVF0MM&usqp=CAU" alt="Thánh Giáp Pharaoh Vàng" />
+                        <h4>Thánh Giáp Pharaoh Vàng</h4>
+                        <p>Đây chính là bộ thánh giáp người chơi cần săn với mức giá đắt đỏ.</p>
+                        <p class="price">$812.79 USD</p>
+                        <a href="/html/game-detail/game1.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://lienquan.garena.vn/wp-content/uploads/2024/05/bc402592f4d5daa41a15e6d67489cbd061175a79399571.png" alt="Ngộ Không Nhóc Tì Bá Đạo" />
+                        <h4>Ngộ Không Nhóc Tì Bá Đạo</h4>
+                        <p>Ngộ Không nhóc tì bá đạo là một skin đắt nhất trong Liên Quân Mobile.</p>
+                        <p class="price">$110.50 USD</p>
+                        <a href="/html/game-detail/game2.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://i.ytimg.com/vi/4ZwlDq8bHFE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAy5o2P7ZxNT3nl7meTDw-IDaGPOg" alt="Arcane Vi" />
+                        <h4>Arcane Vi</h4>
+                        <p>Arcane Vi là skin huyền thoại trong Liên Minh Huyền Thoại.</p>
+                        <p class="price">$150.00 USD</p>
+                        <a href="/html/game-detail/game7.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://rpgifting.com/wp-content/uploads/2023/12/Elementalist-Lux-574498-300x300.jpg" alt="Elementalist Lux" />
+                        <h4>Elementalist Lux</h4>
+                        <p>Elementalist Lux là skin tối thượng với 10 dạng biến đổi trong LMHT.</p>
+                        <p class="price">$325.00 USD</p>
+                        <a href="/html/game-detail/game8.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                    <div class="game">
+                        <img src="https://a-static.besthdwallpaper.com/poseidon-x-suit-playerunknown-s-battlegrounds-pubg-wallpaper-3840x2160-80053_54.jpg" alt="Thánh Giáp Poseidon" />
+                        <h4>Thánh Giáp Poseidon</h4>
+                        <p>Thánh Giáp Poseidon là bộ giáp huyền thoại và hiếm nhất trong PUBG.</p>
+                        <p class="price">$980.00 USD</p>
+                        <a href="/html/game-detail/game6.html" class="buy-button">Mua Ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-button" onclick="slideLeft('otherList')"><</button>
+                <button class="slider-button" onclick="slideRight('otherList')">></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to-use" class="how-to-use">
+        <h2>Cách sử dụng</h2>
+        <p>Đầu tiên, bạn cần phải có tiền. Nếu bạn muốn mua, hãy nhấp vào "Mua ngay".</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Game Items Store</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+    </footer>
+    
+     <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+    <!-- Existing initialization/config -->
+    <script src="/js/firebase-config.js" type="module"></script>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const sliders = {
+            'shootingList': { index: 0 },
+            'otherList': { index: 0 }
+        };
+        const itemsPerPage = 3;
+        const itemWidth = 330;
+
+        function slideLeft(listId) {
+            const slider = sliders[listId];
+            if (slider.index > 0) {
+                slider.index--;
+                updateSlider(listId);
+            }
+        }
+
+        function slideRight(listId) {
+            const slider = sliders[listId];
+            const gameList = document.getElementById(listId);
+            const totalItems = gameList.children.length;
+            if (slider.index < Math.ceil(totalItems / itemsPerPage) - 1) {
+                slider.index++;
+                updateSlider(listId);
+            }
+        }
+
+        function updateSlider(listId) {
+            const slider = sliders[listId];
+            const gameList = document.getElementById(listId);
+            const offset = -slider.index * itemWidth * itemsPerPage;
+            gameList.style.transform = `translateX(${offset}px)`;
+        }
+
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedY = Math.random() * 1 + 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.y += this.speedY;
+                if (this.y > canvas.height) {
+                    this.y = -this.size;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255, 107, 107, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+<script type="module">
+      import { db } from '/js/firebase-config.js';
+
+      // Create container for dynamic data
+      const firebaseContainer = document.createElement('section');
+      firebaseContainer.id = 'firebase-data';
+      firebaseContainer.innerHTML = '<h2>Dữ liệu từ Firestore</h2><ul id="products-list"></ul>';
+      document.querySelector('.games-section').appendChild(firebaseContainer);
+
+      // Fetch and render data
+      db.collection('products').get().then((snapshot) => {
+        const listEl = document.getElementById('products-list');
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          const li = document.createElement('li');
+          li.textContent = `${data.name} - Giá: ${data.price}₫`;
+          listEl.appendChild(li);
+        });
+      }).catch((error) => {
+        console.error('Lỗi khi đọc dữ liệu Firestore:', error);
+      });
+    </script>
+    
+</script>
+</body>
+</html>

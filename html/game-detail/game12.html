@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWP Dragon Lore - Game Items Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2c2c44 100%);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        header.scrolled .logo {
+            color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled nav ul li a {
+            color: #333;
+        }
+
+        nav ul li a:hover {
+            background: #ff4757;
+            color: #fff;
+        }
+
+        .container {
+            width: 70%;
+            margin: 120px auto;
+            background: #29293d;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff4757;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(255, 71, 87, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            margin: 20px auto;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image:hover {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            margin: 30px 0;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        .product-details p {
+            margin: 15px 0;
+        }
+
+        .highlight {
+            color: #ff4757;
+            font-weight: 600;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .stats div {
+            text-align: center;
+        }
+
+        .stats div span {
+            display: block;
+            font-size: 1.2rem;
+            color: #ff4757;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: #ff4757;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        .buy-now {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #ff4757, #ff6b81);
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .buy-now:hover {
+            background: linear-gradient(45deg, #ff6b81, #ff4757);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.6);
+        }
+
+        footer {
+            background: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header id="navbar">
+        <div class="logo">Shop skin trò chơi</div>
+        <nav>
+            <ul>
+                <li><a href="/html/index.html">Trang chủ</a></li>
+                <li><a href="#games">Skin trò chơi</a></li>
+                <li><a href="#how-to-use">Cách sử dụng</a></li>
+                <li><a href="/html/login.html">Đăng nhập</a></li>
+                <li><a href="/html/contact.html">Hỗ Trợ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>AWP Dragon Lore</h1>
+        <img class="product-image" src="https://broskins.com/index.php?media/souvenir-awp-dragon-lore-fn-fnatic-foil-katowice-2014.1680/full" alt="AWP Dragon Lore" />
+        <div class="product-details">
+            <p><strong class="highlight">AWP Dragon Lore</strong> là skin súng huyền thoại và đắt giá nhất trong CS:GO (Counter-Strike: Global Offensive). Được giới thiệu vào năm 2014 như một phần của The Cobblestone Collection, Dragon Lore nhanh chóng trở thành biểu tượng của sự xa xỉ và quyền lực trong cộng đồng CS:GO, với giá trị thị trường có thể lên đến hàng chục nghìn USD tùy vào độ mòn và phiên bản (Factory New, Souvenir, v.v.).</p>
+            <p>Skin này nổi bật với thiết kế rồng vàng uy nghiêm được khắc trên thân súng AWP, với các chi tiết tinh xảo và màu sắc rực rỡ. Dragon Lore không chỉ đẹp về mặt thẩm mỹ mà còn mang ý nghĩa biểu tượng, thường được sử dụng bởi các game thủ chuyên nghiệp trong các giải đấu lớn. Sở hữu một chiếc AWP Dragon Lore không chỉ là niềm tự hào mà còn là minh chứng cho sự đầu tư và đam mê của người chơi.</p>
+            <p><strong class="highlight">Điểm nổi bật của AWP Dragon Lore:</strong></p>
+            <p>✔ <strong>Thiết kế rồng vàng:</strong> Hình ảnh rồng vàng được khắc trên thân súng, với các chi tiết tinh xảo, tạo cảm giác uy quyền và mạnh mẽ.</p>
+            <p>✔ <strong>Độ hiếm cao:</strong> Thuộc dòng Covert, chỉ có thể nhận được từ The Cobblestone Collection, khiến nó cực kỳ hiếm.</p>
+            <p>✔ <strong>Giá trị thị trường cao:</strong> Một chiếc AWP Dragon Lore Factory New có thể có giá lên đến $10,000 USD hoặc hơn, đặc biệt nếu là phiên bản Souvenir.</p>
+            <p>✔ <strong>Biểu tượng của CS:GO:</strong> Được sử dụng bởi nhiều game thủ chuyên nghiệp, Dragon Lore đã trở thành một phần không thể thiếu trong lịch sử của CS:GO.</p>
+            <p>AWP Dragon Lore không chỉ là một skin súng, mà còn là một món đồ sưu tầm có giá trị cao và là niềm mơ ước của mọi game thủ CS:GO. Sở hữu skin này không chỉ giúp bạn nổi bật trong trận đấu mà còn thể hiện đẳng cấp của bạn trong cộng đồng game thủ.</p>
+        </div>
+        <div class="stats">
+            <div>
+                <span>Độ hiếm</span>
+                Covert
+            </div>
+            <div>
+                <span>Bộ sưu tập</span>
+                The Cobblestone Collection
+            </div>
+            <div>
+                <span>Ngày phát hành</span>
+                07/2014
+            </div>
+        </div>
+        <div class="price">$2,500.00 USD</div>
+    </div>
+
+    <a href="/html/checkout.html?title=AWP Dragon Lore&image=https://media.fab.com/image_previews/gallery_images/03f94b58-7864-4b34-9ed9-e99231a54ebb/9cc4a0c1-7b08-4df8-a247-dd3d0d2f5798.png&price=$2500.00" class="buy-now">Mua ngay</a>
+
+    <footer>
+        <p>&copy; 2025 Game Items Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

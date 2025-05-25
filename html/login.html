@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6b48ff, #00ddeb);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Home Button */
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-btn:hover {
+            background: linear-gradient(45deg, #feca57, #ff6b6b);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-btn:active {
+            transform: scale(0.95);
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #fff;
+            color: #6b48ff;
+        }
+
+        /* Login Form (Panda Style) */
+        .container {
+            height: 31.25em;
+            width: 31.25em;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+        }
+        
+        #loginForm {
+            width: 23.75em;
+            height: 18.75em;
+            background-color: #ffffff;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: calc(50% + 3.1em);
+            left: 50%;
+            padding: 0 3.1em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 0.5em;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        #loginForm label {
+            display: block;
+            margin-bottom: 0.2em;
+            font-weight: 600;
+            color: #2e0d30;
+        }
+        
+        #loginForm input {
+            font-size: 0.95em;
+            font-weight: 400;
+            color: #3f3554;
+            padding: 0.3em;
+            border: none;
+            border-bottom: 0.12em solid #3f3554;
+            outline: none;
+            background: transparent;
+        }
+        
+        #loginForm input:focus {
+            border-color: #f4c531;
+        }
+        
+        #loginForm input:not(:last-child) {
+            margin-bottom: 0.9em;
+        }
+        
+        #loginForm button {
+            font-size: 0.95em;
+            padding: 0.8em 0;
+            border-radius: 2em;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            background-color: #ff99ff;
+            color: #2e0d30;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-top: 0.8em;
+            transition: 0.5s;
+        }
+        
+        #loginForm button:hover {
+            background-color: #ff66ff;
+        }
+        .panda-face {
+            height: 7.5em;
+            width: 8.4em;
+            background-color: #ffffff;
+            border: 0.18em solid #2e0d30;
+            border-radius: 7.5em 7.5em 5.62em 5.62em;
+            position: absolute;
+            top: 2em;
+            margin: auto;
+            left: 0;
+            right: 0;
+        }
+        
+        .ear-l, .ear-r {
+            background-color: #3f3554;
+            height: 2.5em;
+            width: 2.81em;
+            border: 0.18em solid #2e0d30;
+            border-radius: 2.5em 2.5em 0 0;
+            top: 1.75em;
+            position: absolute;
+        }
+        
+        .ear-l { transform: rotate(-38deg); left: 10.75em; }
+        .ear-r { transform: rotate(38deg); right: 10.75em; }
+        
+        .blush-l, .blush-r {
+            background-color: #ff8bb1;
+            height: 1em;
+            width: 1.37em;
+            border-radius: 50%;
+            position: absolute;
+            top: 4em;
+        }
+        
+        .blush-l { transform: rotate(25deg); left: 1em; }
+        .blush-r { transform: rotate(-25deg); right: 1em; }
+        
+        .eye-l, .eye-r {
+            background-color: #3f3554;
+            height: 2.18em;
+            width: 2em;
+            border-radius: 2em;
+            position: absolute;
+            top: 2.18em;
+        }
+        
+        .eye-l { left: 1.37em; transform: rotate(-20deg); }
+        .eye-r { right: 1.37em; transform: rotate(20deg); }
+        
+        .eyeball-l, .eyeball-r {
+            height: 0.6em;
+            width: 0.6em;
+            background-color: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            left: 0.6em;
+            top: 0.6em;
+            transition: 1s all;
+        }
+        
+        .eyeball-l { transform: rotate(20deg); }
+        .eyeball-r { transform: rotate(-20deg); }
+        
+        .nose {
+            height: 1em;
+            width: 1em;
+            background-color: #3f3554;
+            position: absolute;
+            top: 4.37em;
+            margin: auto;
+            left: 0;
+            right: 0;
+            border-radius: 1.2em 0 0 0.25em;
+            transform: rotate(45deg);
+        }
+        
+        .nose:before {
+            content: "";
+            position: absolute;
+            background-color: #3f3554;
+            height: 0.6em;
+            width: 0.1em;
+            transform: rotate(-45deg);
+            top: 0.75em;
+            left: 1em;
+        }
+        
+        .mouth, .mouth:before {
+            height: 0.75em;
+            width: 0.93em;
+            background-color: transparent;
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0.18em #3f3554;
+        }
+        
+        .mouth { top: 5.31em; left: 3.12em; }
+        .mouth:before { content: ""; position: absolute; left: 0.87em; }
+        
+        .hand-l, .hand-r {
+            background-color: #3f3554;
+            height: 2.81em;
+            width: 2.5em;
+            border: 0.18em solid #2e0d30;
+            border-radius: 0.6em 0.6em 2.18em 2.18em;
+            transition: 1s all;
+            position: absolute;
+            top: 8.4em;
+        }
+        
+        .hand-l { left: 7.5em; }
+        .hand-r { right: 7.5em; }
+        
+        .paw-l, .paw-r {
+            background-color: #3f3554;
+            height: 3.12em;
+            width: 3.12em;
+            border: 0.18em solid #2e0d30;
+            border-radius: 2.5em 2.5em 1.2em 1.2em;
+            position: absolute;
+            top: 26.56em;
+        }
+        
+        .paw-l { left: 10em; }
+        .paw-r { right: 10em; }
+        
+        .paw-l:before, .paw-r:before {
+            position: absolute;
+            content: "";
+            background-color: #ffffff;
+            height: 1.37em;
+            width: 1.75em;
+            top: 1.12em;
+            left: 0.55em;
+            border-radius: 1.56em 1.56em 0.6em 0.6em;
+        }
+        
+        .paw-l:after, .paw-r:after {
+            position: absolute;
+            content: "";
+            background-color: #ffffff;
+            height: 0.5em;
+            width: 0.5em;
+            border-radius: 50%;
+            top: 0.31em;
+            left: 1.12em;
+            box-shadow: 0.87em 0.37em #ffffff, -0.87em 0.37em #ffffff;
+        }
+
+        @media screen and (max-width: 500px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/html/index.html" class="home-btn">Trang chủ</a>
+    <div class="nav-buttons">
+        <a href="/html/login.html" class="nav-btn active">Login</a>
+        <a href="/html/login.html" class="nav-btn" id="signupBtn">Sign Up</a>
+    </div>
+
+    <div class="container">
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email here..." required /><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password here..." minlength="6" maxlength="18" required /><br>
+            <button type="submit">Sign In</button>
+        </form>
+        <div class="ear-l"></div>
+        <div class="ear-r"></div>
+        <div class="panda-face">
+            <div class="blush-l"></div>
+            <div class="blush-r"></div>
+            <div class="eye-l">
+                <div class="eyeball-l"></div>
+            </div>
+            <div class="eye-r">
+                <div class="eyeball-r"></div>
+            </div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+        </div>
+        <div class="hand-l"></div>
+        <div class="hand-r"></div>
+        <div class="paw-l"></div>
+        <div class="paw-r"></div>
+    </div>
+
+         <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+
+
+    <script>
+        const firebaseConfig = {
+  apiKey: "AIzaSyC9YCJlFvmjvheehAhX7Rwe3BckM9E1558",
+  authDomain: "dungkae1.firebaseapp.com",
+  projectId: "dungkae1",
+  storageBucket: "dungkae1.firebasestorage.app",
+  messagingSenderId: "390014988200",
+  appId: "1:390014988200:web:c31c49ebe162c98c61b79d",
+  measurementId: "G-7KTZPS260J"
+};
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        
+        
+
+        let emailRef = document.getElementById("email");
+        let passwordRef = document.getElementById("password");
+        let eyeL = document.querySelector(".eyeball-l");
+        let eyeR = document.querySelector(".eyeball-r");
+        let handL = document.querySelector(".hand-l");
+        let handR = document.querySelector(".hand-r");
+
+        const normalEyeStyle = () => {
+            eyeL.style.cssText = `left: 0.6em; top: 0.6em;`;
+            eyeR.style.cssText = `right: 0.6em; top: 0.6em;`;
+        };
+        const normalHandStyle = () => {
+            handL.style.cssText = `height: 2.81em; top: 8.4em; left: 7.5em; transform: rotate(0deg);`;
+            handR.style.cssText = `height: 2.81em; top: 8.4em; right: 7.5em; transform: rotate(0deg);`;
+        };
+
+        emailRef.addEventListener("focus", () => {
+            eyeL.style.cssText = `left: 0.75em; top: 1.12em;`;
+            eyeR.style.cssText = `right: 0.75em; top: 1.12em;`;
+            normalHandStyle();
+        });
+        passwordRef.addEventListener("focus", () => {
+            handL.style.cssText = `height: 6.56em; top: 3.87em; left: 11.75em; transform: rotate(-155deg);`;
+            handR.style.cssText = `height: 6.56em; top: 3.87em; right: 11.75em; transform: rotate(155deg);`;
+            normalEyeStyle();
+        });
+        document.addEventListener("click", e => {
+            if (e.target !== emailRef && e.target !== passwordRef) {
+                normalEyeStyle();
+                normalHandStyle();
+            }
+        });
+        document.getElementById("signupBtn").addEventListener("click", e => {
+            e.preventDefault();
+            if (handL) handL.remove();
+            if (handR) handR.remove();
+            setTimeout(() => {
+                window.location.href = "signup.html";
+            }, 300);
+        });
+
+
+        document.getElementById("loginForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const email = emailRef.value.trim();
+    const password = passwordRef.value.trim();
+
+    auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+            window.location.href = "index.html";
+        })
+        .catch(err => {
+            alert(err.message);
+        });
+});
+    </script>
+</body>
+</html>
