@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,8 +90,13 @@
         }
 
         @keyframes glow {
-            0% { text-shadow: 0 0 5px #ff6b6b; }
-            100% { text-shadow: 0 0 15px #feca57; }
+            0% {
+                text-shadow: 0 0 5px #ff6b6b;
+            }
+
+            100% {
+                text-shadow: 0 0 15px #feca57;
+            }
         }
 
         .hero {
@@ -119,9 +125,20 @@
         }
 
         @keyframes lightPulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 0.5; }
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
         }
 
         .hero-content h1 {
@@ -156,19 +173,41 @@
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .games-section {
@@ -201,7 +240,8 @@
             overflow: hidden;
         }
 
-        .game-list {
+        .game-list-1,
+        .game-list-2 {
             display: flex;
             transition: transform 0.5s ease;
         }
@@ -363,9 +403,17 @@
         }
 
         @keyframes wave {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
 
         footer p {
@@ -391,6 +439,7 @@
         }
     </style>
 </head>
+
 <body>
     <canvas id="particles"></canvas>
     <header id="navbar">
@@ -420,16 +469,18 @@
         <div class="game-category">
             <h3>Skin Súng</h3>
             <div class="game-slider" id="shootingSlider">
-                <div class="game-list" id="shootingList">
+                <div class="game-list-1" id="shootingList">
                     <div class="game">
-                        <img src="https://api.duniagames.co.id/api/content/upload/file/16516125501609742981.jpg" alt="Scar Megalodon Alpha" />
+                        <img src="https://api.duniagames.co.id/api/content/upload/file/16516125501609742981.jpg"
+                            alt="Scar Megalodon Alpha" />
                         <h4>Scar Megalodon Alpha</h4>
                         <p>Scar Megalodon Alpha là khẩu súng đắt nhất và hiếm nhất trong Free Fire.</p>
                         <p class="price">$200.00 USD</p>
                         <a href="/html/game-detail/game4.html" class="buy-button">Mua Ngay</a>
                     </div>
                     <div class="game">
-                        <img src="https://imageio.forbes.com/specials-images/imageserve/613766b74881e4e67926a2c3/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds" alt="Zedd x Spectrum Skin"/>
+                        <img src="https://imageio.forbes.com/specials-images/imageserve/613766b74881e4e67926a2c3/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds"
+                            alt="Zedd x Spectrum Skin" />
                         <h4>Zedd x Spectrum Skin</h4>
                         <p>Là bộ súng đắt và đẹp nhất trong game valorant</p>
                         <p class="price">$100.00 USD</p>
@@ -443,21 +494,24 @@
                         <a href="/html/game-detail/game5.html" class="buy-button">Mua Ngay</a>
                     </div>
                     <div class="game">
-                        <img src="https://preview.redd.it/t387olbrtdq91.jpg?width=640&crop=smart&auto=webp&s=ba252b20807f3f951d144660d6e93bca1a5d042b" alt="Glacier M416" />
+                        <img src="https://preview.redd.it/t387olbrtdq91.jpg?width=640&crop=smart&auto=webp&s=ba252b20807f3f951d144660d6e93bca1a5d042b"
+                            alt="Glacier M416" />
                         <h4>Glacier M416</h4>
                         <p>Glacier M416 là skin súng hiếm và được săn đón nhất trong PUBG.</p>
                         <p class="price">$450.00 USD</p>
                         <a href="/html/game-detail/game9.html" class="buy-button">Mua Ngay</a>
                     </div>
                     <div class="game">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFVZK-ZNb9O77QiaoZvurcEJnqBXq3eJ-jEQ&s" alt="FFWS 2021 MP40" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFVZK-ZNb9O77QiaoZvurcEJnqBXq3eJ-jEQ&s"
+                            alt="FFWS 2021 MP40" />
                         <h4>FFWS 2021 MP40</h4>
                         <p>FFWS 2021 MP40 là skin súng kỷ niệm giải đấu Free Fire World Series 2021.</p>
                         <p class="price">$180.00 USD</p>
                         <a href="/html/game-detail/game10.html" class="buy-button">Mua Ngay</a>
                     </div>
                     <div class="game">
-                        <img src="https://media.fab.com/image_previews/gallery_images/03f94b58-7864-4b34-9ed9-e99231a54ebb/9cc4a0c1-7b08-4df8-a247-dd3d0d2f5798.png" alt="AWP Dragon Lore" />
+                        <img src="https://media.fab.com/image_previews/gallery_images/03f94b58-7864-4b34-9ed9-e99231a54ebb/9cc4a0c1-7b08-4df8-a247-dd3d0d2f5798.png"
+                            alt="AWP Dragon Lore" />
                         <h4>AWP Dragon Lore</h4>
                         <p>AWP Dragon Lore là skin súng huyền thoại và đắt nhất trong CS:GO.</p>
                         <p class="price">$2,500.00 USD</p>
@@ -466,7 +520,9 @@
                 </div>
             </div>
             <div class="slider-controls">
-                <button class="slider-button" onclick="slideLeft('shootingList')"><</button>
+                <button class="slider-button" onclick="slideLeft('shootingList')">
+                    &rarr;
+                </button>
                 <button class="slider-button" onclick="slideRight('shootingList')">></button>
             </div>
         </div>
@@ -474,37 +530,42 @@
         <div class="game-category">
             <h3>Trang Phục</h3>
             <div class="game-slider" id="otherSlider">
-                <div class="game-list" id="otherList">
+                <div class="game-list-2" id="otherList">
                     <div class="game">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS247xQqRelJjTL_scUPSdfeoeSpGMrYl61A4oEcbsdMREeBO9jHNT4e-oiqhVU-vVF0MM&usqp=CAU" alt="Thánh Giáp Pharaoh Vàng" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS247xQqRelJjTL_scUPSdfeoeSpGMrYl61A4oEcbsdMREeBO9jHNT4e-oiqhVU-vVF0MM&usqp=CAU"
+                            alt="Thánh Giáp Pharaoh Vàng" />
                         <h4>Thánh Giáp Pharaoh Vàng</h4>
                         <p>Đây chính là bộ thánh giáp người chơi cần săn với mức giá đắt đỏ.</p>
                         <p class="price">$812.79 USD</p>
                         <a href="/html/game-detail/game1.html" class="buy-button">Mua Ngay</a>
                     </div>
                     <div class="game">
-                        <img src="https://lienquan.garena.vn/wp-content/uploads/2024/05/bc402592f4d5daa41a15e6d67489cbd061175a79399571.png" alt="Ngộ Không Nhóc Tì Bá Đạo" />
+                        <img src="https://lienquan.garena.vn/wp-content/uploads/2024/05/bc402592f4d5daa41a15e6d67489cbd061175a79399571.png"
+                            alt="Ngộ Không Nhóc Tì Bá Đạo" />
                         <h4>Ngộ Không Nhóc Tì Bá Đạo</h4>
                         <p>Ngộ Không nhóc tì bá đạo là một skin đắt nhất trong Liên Quân Mobile.</p>
                         <p class="price">$110.50 USD</p>
                         <a href="/html/game-detail/game2.html" class="buy-button">Mua Ngay</a>
                     </div>
                     <div class="game">
-                        <img src="https://i.ytimg.com/vi/4ZwlDq8bHFE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAy5o2P7ZxNT3nl7meTDw-IDaGPOg" alt="Arcane Vi" />
+                        <img src="https://i.ytimg.com/vi/4ZwlDq8bHFE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAy5o2P7ZxNT3nl7meTDw-IDaGPOg"
+                            alt="Arcane Vi" />
                         <h4>Arcane Vi</h4>
                         <p>Arcane Vi là skin huyền thoại trong Liên Minh Huyền Thoại.</p>
                         <p class="price">$150.00 USD</p>
                         <a href="/html/game-detail/game7.html" class="buy-button">Mua Ngay</a>
                     </div>
                     <div class="game">
-                        <img src="https://rpgifting.com/wp-content/uploads/2023/12/Elementalist-Lux-574498-300x300.jpg" alt="Elementalist Lux" />
+                        <img src="https://rpgifting.com/wp-content/uploads/2023/12/Elementalist-Lux-574498-300x300.jpg"
+                            alt="Elementalist Lux" />
                         <h4>Elementalist Lux</h4>
                         <p>Elementalist Lux là skin tối thượng với 10 dạng biến đổi trong LMHT.</p>
                         <p class="price">$325.00 USD</p>
                         <a href="/html/game-detail/game8.html" class="buy-button">Mua Ngay</a>
                     </div>
                     <div class="game">
-                        <img src="https://a-static.besthdwallpaper.com/poseidon-x-suit-playerunknown-s-battlegrounds-pubg-wallpaper-3840x2160-80053_54.jpg" alt="Thánh Giáp Poseidon" />
+                        <img src="https://a-static.besthdwallpaper.com/poseidon-x-suit-playerunknown-s-battlegrounds-pubg-wallpaper-3840x2160-80053_54.jpg"
+                            alt="Thánh Giáp Poseidon" />
                         <h4>Thánh Giáp Poseidon</h4>
                         <p>Thánh Giáp Poseidon là bộ giáp huyền thoại và hiếm nhất trong PUBG.</p>
                         <p class="price">$980.00 USD</p>
@@ -513,8 +574,9 @@
                 </div>
             </div>
             <div class="slider-controls">
-                <button class="slider-button" onclick="slideLeft('otherList')"><</button>
-                <button class="slider-button" onclick="slideRight('otherList')">></button>
+                <button class="slider-button" onclick="slideLeft('otherList')">
+                    &larr;</button>
+                        <button class="slider-button" onclick="slideRight('otherList')">></button>
             </div>
         </div>
     </section>
@@ -533,14 +595,11 @@
             <a href="#"><i class="fab fa-discord"></i></a>
         </div>
     </footer>
-    
-     <!-- Firebase SDKs -->
+
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
-
-    <!-- Existing initialization/config -->
-    <script src="/js/firebase-config.js" type="module"></script>
 
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -634,29 +693,11 @@
             canvas.height = window.innerHeight;
         });
     </script>
-<script type="module">
-      import { db } from '/js/firebase-config.js';
+    <script type="module" src="/js/firebase-config.js">
 
-      // Create container for dynamic data
-      const firebaseContainer = document.createElement('section');
-      firebaseContainer.id = 'firebase-data';
-      firebaseContainer.innerHTML = '<h2>Dữ liệu từ Firestore</h2><ul id="products-list"></ul>';
-      document.querySelector('.games-section').appendChild(firebaseContainer);
-
-      // Fetch and render data
-      db.collection('products').get().then((snapshot) => {
-        const listEl = document.getElementById('products-list');
-        snapshot.forEach((doc) => {
-          const data = doc.data();
-          const li = document.createElement('li');
-          li.textContent = `${data.name} - Giá: ${data.price}₫`;
-          listEl.appendChild(li);
-        });
-      }).catch((error) => {
-        console.error('Lỗi khi đọc dữ liệu Firestore:', error);
-      });
     </script>
-    
-</script>
+
+    </script>
 </body>
+
 </html>
