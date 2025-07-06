@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,11 +16,13 @@
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
         }
+
         body {
             background: linear-gradient(135deg, #6b48ff, #00ddeb);
             height: 100vh;
             overflow: hidden;
         }
+
         .home-btn {
             position: absolute;
             top: 20px;
@@ -35,14 +38,17 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
+
         .home-btn:hover {
             background: linear-gradient(45deg, #feca57, #ff6b6b);
             transform: scale(1.05);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
+
         .home-btn:active {
             transform: scale(0.95);
         }
+
         .nav-buttons {
             position: absolute;
             top: 20px;
@@ -50,6 +56,7 @@
             display: flex;
             gap: 15px;
         }
+
         .nav-btn {
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.2);
@@ -61,10 +68,13 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        .nav-btn:hover, .nav-btn.active {
+
+        .nav-btn:hover,
+        .nav-btn.active {
             background: #fff;
             color: #6b48ff;
         }
+
         #registerForm {
             width: 23.75em;
             padding: 2em;
@@ -83,6 +93,7 @@
             background-clip: padding-box;
             position: relative;
         }
+
         #registerForm::before {
             content: '';
             position: absolute;
@@ -95,14 +106,29 @@
             border-radius: 17px;
             animation: glow 2s infinite alternate;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -60%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
         }
+
         @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(107, 72, 255, 0.5); }
-            100% { box-shadow: 0 0 20px rgba(0, 221, 235, 0.8); }
+            0% {
+                box-shadow: 0 0 10px rgba(107, 72, 255, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 20px rgba(0, 221, 235, 0.8);
+            }
         }
+
         #registerForm label {
             color: #333;
             font-weight: 500;
@@ -110,16 +136,27 @@
             font-size: 0.9em;
             transition: all 0.3s ease;
         }
-        #registerForm input:focus + label,
-        #registerForm input:not(:placeholder-shown) + label {
+
+        #registerForm input:focus+label,
+        #registerForm input:not(:placeholder-shown)+label {
             color: #6b48ff;
             animation: pulse 1s infinite;
         }
+
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
+
         #registerForm input {
             width: 100%;
             padding: 0.7em 2em 0.7em 2.5em;
@@ -134,10 +171,12 @@
             background-position: 0.5em center;
             background-size: 1.2em;
         }
+
         #registerForm input:hover {
             transform: scale(1.02);
             box-shadow: 0 0 5px rgba(107, 72, 255, 0.3);
         }
+
         #registerForm input:focus {
             outline: none;
             background-color: #fff;
@@ -146,16 +185,20 @@
             background-clip: padding-box;
             position: relative;
         }
+
         #registerForm input[name="username"] {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" ...>');
         }
+
         #registerForm input[name="email"] {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" ...>');
         }
+
         #registerForm input[name="password"],
         #registerForm input[name="confirmPassword"] {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" ...>');
         }
+
         #registerForm button {
             padding: 0.8em;
             border: none;
@@ -170,11 +213,13 @@
             position: relative;
             overflow: hidden;
         }
+
         #registerForm button:hover {
             background: linear-gradient(45deg, #00ddeb, #6b48ff);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transform: scale(1.05);
         }
+
         @media screen and (max-width: 500px) {
             #registerForm {
                 width: 90%;
@@ -182,11 +227,12 @@
         }
     </style>
 </head>
+
 <body>
-    <a href="/html/index.html" class="home-btn">Trang chủ</a>
+    <a href="index.html" class="home-btn">Trang chủ</a>
     <div class="nav-buttons">
-        <a href="/html/login.html" class="nav-btn">Login</a>
-        <a href="/html/signup.html" class="nav-btn active">Sign Up</a>
+        <a href="login.html" class="nav-btn">Login</a>
+        <a href="signup.html" class="nav-btn active">Sign Up</a>
     </div>
 
     <form id="registerForm">
@@ -195,23 +241,26 @@
         <label for="reg-email">Email:</label>
         <input type="email" id="reg-email" name="email" placeholder="Email" required />
         <label for="reg-password">Password:</label>
-        <input type="password" id="reg-password" name="password" placeholder="Password" minlength="6" maxlength="18" required />
+        <input type="password" id="reg-password" name="password" placeholder="Password" minlength="6" maxlength="18"
+            required />
         <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" minlength="6" maxlength="18" required oninput="this.setCustomValidity(this.value != document.getElementById('reg-password').value ? 'Passwords do not match.' : '')" />
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" minlength="6"
+            maxlength="18" required
+            oninput="this.setCustomValidity(this.value != document.getElementById('reg-password').value ? 'Passwords do not match.' : '')" />
         <button type="submit">Register</button>
     </form>
     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
     <script>
         const firebaseConfig = {
-  apiKey: "AIzaSyC9YCJlFvmjvheehAhX7Rwe3BckM9E1558",
-  authDomain: "dungkae1.firebaseapp.com",
-  projectId: "dungkae1",
-  storageBucket: "dungkae1.firebasestorage.app",
-  messagingSenderId: "390014988200",
-  appId: "1:390014988200:web:c31c49ebe162c98c61b79d",
-  measurementId: "G-7KTZPS260J"
-};
+            apiKey: "AIzaSyC9YCJlFvmjvheehAhX7Rwe3BckM9E1558",
+            authDomain: "dungkae1.firebaseapp.com",
+            projectId: "dungkae1",
+            storageBucket: "dungkae1.firebasestorage.app",
+            messagingSenderId: "390014988200",
+            appId: "1:390014988200:web:c31c49ebe162c98c61b79d",
+            measurementId: "G-7KTZPS260J"
+        };
 
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
@@ -240,4 +289,5 @@
         });
     </script>
 </body>
+
 </html>

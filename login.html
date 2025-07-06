@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +17,7 @@
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
         }
-        
+
         body {
             background: linear-gradient(135deg, #6b48ff, #00ddeb);
             height: 100vh;
@@ -49,6 +50,7 @@
         .home-btn:active {
             transform: scale(0.95);
         }
+
         .nav-buttons {
             position: absolute;
             top: 20px;
@@ -69,7 +71,8 @@
             text-decoration: none;
         }
 
-        .nav-btn:hover, .nav-btn.active {
+        .nav-btn:hover,
+        .nav-btn.active {
             background: #fff;
             color: #6b48ff;
         }
@@ -83,7 +86,7 @@
             top: 50%;
             left: 50%;
         }
-        
+
         #loginForm {
             width: 23.75em;
             height: 18.75em;
@@ -99,14 +102,14 @@
             border-radius: 0.5em;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        
+
         #loginForm label {
             display: block;
             margin-bottom: 0.2em;
             font-weight: 600;
             color: #2e0d30;
         }
-        
+
         #loginForm input {
             font-size: 0.95em;
             font-weight: 400;
@@ -117,15 +120,15 @@
             outline: none;
             background: transparent;
         }
-        
+
         #loginForm input:focus {
             border-color: #f4c531;
         }
-        
+
         #loginForm input:not(:last-child) {
             margin-bottom: 0.9em;
         }
-        
+
         #loginForm button {
             font-size: 0.95em;
             padding: 0.8em 0;
@@ -141,10 +144,11 @@
             margin-top: 0.8em;
             transition: 0.5s;
         }
-        
+
         #loginForm button:hover {
             background-color: #ff66ff;
         }
+
         .panda-face {
             height: 7.5em;
             width: 8.4em;
@@ -157,8 +161,9 @@
             left: 0;
             right: 0;
         }
-        
-        .ear-l, .ear-r {
+
+        .ear-l,
+        .ear-r {
             background-color: #3f3554;
             height: 2.5em;
             width: 2.81em;
@@ -167,11 +172,19 @@
             top: 1.75em;
             position: absolute;
         }
-        
-        .ear-l { transform: rotate(-38deg); left: 10.75em; }
-        .ear-r { transform: rotate(38deg); right: 10.75em; }
-        
-        .blush-l, .blush-r {
+
+        .ear-l {
+            transform: rotate(-38deg);
+            left: 10.75em;
+        }
+
+        .ear-r {
+            transform: rotate(38deg);
+            right: 10.75em;
+        }
+
+        .blush-l,
+        .blush-r {
             background-color: #ff8bb1;
             height: 1em;
             width: 1.37em;
@@ -179,11 +192,19 @@
             position: absolute;
             top: 4em;
         }
-        
-        .blush-l { transform: rotate(25deg); left: 1em; }
-        .blush-r { transform: rotate(-25deg); right: 1em; }
-        
-        .eye-l, .eye-r {
+
+        .blush-l {
+            transform: rotate(25deg);
+            left: 1em;
+        }
+
+        .blush-r {
+            transform: rotate(-25deg);
+            right: 1em;
+        }
+
+        .eye-l,
+        .eye-r {
             background-color: #3f3554;
             height: 2.18em;
             width: 2em;
@@ -191,11 +212,19 @@
             position: absolute;
             top: 2.18em;
         }
-        
-        .eye-l { left: 1.37em; transform: rotate(-20deg); }
-        .eye-r { right: 1.37em; transform: rotate(20deg); }
-        
-        .eyeball-l, .eyeball-r {
+
+        .eye-l {
+            left: 1.37em;
+            transform: rotate(-20deg);
+        }
+
+        .eye-r {
+            right: 1.37em;
+            transform: rotate(20deg);
+        }
+
+        .eyeball-l,
+        .eyeball-r {
             height: 0.6em;
             width: 0.6em;
             background-color: #ffffff;
@@ -205,10 +234,15 @@
             top: 0.6em;
             transition: 1s all;
         }
-        
-        .eyeball-l { transform: rotate(20deg); }
-        .eyeball-r { transform: rotate(-20deg); }
-        
+
+        .eyeball-l {
+            transform: rotate(20deg);
+        }
+
+        .eyeball-r {
+            transform: rotate(-20deg);
+        }
+
         .nose {
             height: 1em;
             width: 1em;
@@ -221,7 +255,7 @@
             border-radius: 1.2em 0 0 0.25em;
             transform: rotate(45deg);
         }
-        
+
         .nose:before {
             content: "";
             position: absolute;
@@ -232,8 +266,9 @@
             top: 0.75em;
             left: 1em;
         }
-        
-        .mouth, .mouth:before {
+
+        .mouth,
+        .mouth:before {
             height: 0.75em;
             width: 0.93em;
             background-color: transparent;
@@ -241,11 +276,20 @@
             border-radius: 50%;
             box-shadow: 0 0.18em #3f3554;
         }
-        
-        .mouth { top: 5.31em; left: 3.12em; }
-        .mouth:before { content: ""; position: absolute; left: 0.87em; }
-        
-        .hand-l, .hand-r {
+
+        .mouth {
+            top: 5.31em;
+            left: 3.12em;
+        }
+
+        .mouth:before {
+            content: "";
+            position: absolute;
+            left: 0.87em;
+        }
+
+        .hand-l,
+        .hand-r {
             background-color: #3f3554;
             height: 2.81em;
             width: 2.5em;
@@ -255,11 +299,17 @@
             position: absolute;
             top: 8.4em;
         }
-        
-        .hand-l { left: 7.5em; }
-        .hand-r { right: 7.5em; }
-        
-        .paw-l, .paw-r {
+
+        .hand-l {
+            left: 7.5em;
+        }
+
+        .hand-r {
+            right: 7.5em;
+        }
+
+        .paw-l,
+        .paw-r {
             background-color: #3f3554;
             height: 3.12em;
             width: 3.12em;
@@ -268,11 +318,17 @@
             position: absolute;
             top: 26.56em;
         }
-        
-        .paw-l { left: 10em; }
-        .paw-r { right: 10em; }
-        
-        .paw-l:before, .paw-r:before {
+
+        .paw-l {
+            left: 10em;
+        }
+
+        .paw-r {
+            right: 10em;
+        }
+
+        .paw-l:before,
+        .paw-r:before {
             position: absolute;
             content: "";
             background-color: #ffffff;
@@ -282,8 +338,9 @@
             left: 0.55em;
             border-radius: 1.56em 1.56em 0.6em 0.6em;
         }
-        
-        .paw-l:after, .paw-r:after {
+
+        .paw-l:after,
+        .paw-r:after {
             position: absolute;
             content: "";
             background-color: #ffffff;
@@ -302,11 +359,12 @@
         }
     </style>
 </head>
+
 <body>
-    <a href="/html/index.html" class="home-btn">Trang chủ</a>
+    <a href="index.html" class="home-btn">Trang chủ</a>
     <div class="nav-buttons">
-        <a href="/html/login.html" class="nav-btn active">Login</a>
-        <a href="/html/login.html" class="nav-btn" id="signupBtn">Sign Up</a>
+        <a href="login.html" class="nav-btn active">Login</a>
+        <a href="login.html" class="nav-btn" id="signupBtn">Sign Up</a>
     </div>
 
     <div class="container">
@@ -314,7 +372,8 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Email here..." required /><br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password here..." minlength="6" maxlength="18" required /><br>
+            <input type="password" id="password" name="password" placeholder="Password here..." minlength="6"
+                maxlength="18" required /><br>
             <button type="submit">Sign In</button>
         </form>
         <div class="ear-l"></div>
@@ -337,25 +396,25 @@
         <div class="paw-r"></div>
     </div>
 
-         <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
-         <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
 
 
     <script>
         const firebaseConfig = {
-  apiKey: "AIzaSyC9YCJlFvmjvheehAhX7Rwe3BckM9E1558",
-  authDomain: "dungkae1.firebaseapp.com",
-  projectId: "dungkae1",
-  storageBucket: "dungkae1.firebasestorage.app",
-  messagingSenderId: "390014988200",
-  appId: "1:390014988200:web:c31c49ebe162c98c61b79d",
-  measurementId: "G-7KTZPS260J"
-};
+            apiKey: "AIzaSyC9YCJlFvmjvheehAhX7Rwe3BckM9E1558",
+            authDomain: "dungkae1.firebaseapp.com",
+            projectId: "dungkae1",
+            storageBucket: "dungkae1.firebasestorage.app",
+            messagingSenderId: "390014988200",
+            appId: "1:390014988200:web:c31c49ebe162c98c61b79d",
+            measurementId: "G-7KTZPS260J"
+        };
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
 
-        
-        
+
+
 
         let emailRef = document.getElementById("email");
         let passwordRef = document.getElementById("password");
@@ -400,18 +459,19 @@
 
 
         document.getElementById("loginForm").addEventListener("submit", e => {
-    e.preventDefault();
-    const email = emailRef.value.trim();
-    const password = passwordRef.value.trim();
+            e.preventDefault();
+            const email = emailRef.value.trim();
+            const password = passwordRef.value.trim();
 
-    auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
-            window.location.href = "index.html";
-        })
-        .catch(err => {
-            alert(err.message);
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    window.location.href = "index.html";
+                })
+                .catch(err => {
+                    alert(err.message);
+                });
         });
-});
     </script>
 </body>
+
 </html>
