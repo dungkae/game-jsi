@@ -30,13 +30,15 @@ const db = getFirestore(app);
 // Initialize Cloud Firestore and get a reference to the service
 
 async function displayProducts() {
-  const gunQuery = query(collection(db, "Skin"), where("category", "==", "Gun"));
-  const gunQuerySnapshot = await getDocs(gunQuery);
+  const productCollection = collection(db, "Skin");
+  const querySnapshot = await getDocs(productCollection);
 
-  const wrapper1 = document.querySelector(".game-list-1");
+  const wrapper = document.querySelector(".game-list-1");
 
-  gunQuerySnapshot.forEach((doc) => {
+  querySnapshot.forEach((doc) => {
     const product = doc.data();
+    console.log("🚀 ~ querySnapshot.forEach ~ product:", product)
+    
 
     // Create a swiper-slide element
     const slide = document.createElement("div");
@@ -44,42 +46,15 @@ async function displayProducts() {
 
     // Add product content to the slide
     slide.innerHTML = `
-        <img src="${product.thumbnail}" alt="${product.Name}"/>
-        <h4>${product.Name}</h4>
-        <p>${product.Infor}</p>
-        <p class="price">${product.Price} USD</p>
-        <a href="/html/game-detail/${product.id}.html" class="buy-button">Mua Ngay</a>
-        `;
+                <img src="${product.thumbnail}" alt="Zedd x Spectrum Skin"/>
+                <h4>${product.Name}</h4>
+                <p>${product.Information}</p>
+                <p class="price">$${product.Price} USD</p>
+                <a href="product-detail.html?game=${product.url}" class="buy-button">Mua Ngay</a>
+  `;
 
     // Append the slide to the swiper-wrapper
-    wrapper1.appendChild(slide);
-  });
-
-  // Skin logic
-  const skinQuery = query(collection(db, "Skin"), where("category", "==", "Skin"));
-  const skinQuerySnapshot = await getDocs(skinQuery);
-
-  const wrapper2 = document.querySelector(".game-list-2");
-
-  skinQuerySnapshot.forEach((doc) => {
-    const product = doc.data();
-
-    // Create a swiper-slide element
-    const slide = document.createElement("div");
-    slide.classList.add("game");
-
-    // Add product content to the slide
-    slide.innerHTML = `
-        <img src="${product.thumbnail}" alt="${product.Name}"/>
-        <h4>${product.Name}</h4>
-        <p>${product.Infor}</p>
-        <p class="price">${product.Price} USD</p>
-        <a href="/html/game-detail/${product.id}.html" class="buy-button">Mua Ngay</a>
-        `;
-
-    // Append the slide to the swiper-wrapper
-    wrapper2.appendChild(slide);
-
+    wrapper.appendChild(slide);
   });
 
   // Reinitialize Swiper after adding slides
